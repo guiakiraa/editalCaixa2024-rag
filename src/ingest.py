@@ -1,9 +1,9 @@
 from langchain_community.document_loaders import PyPDFLoader
+from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from types import List
 
 
-def load_chunks(file_path: str = "./data/edital.pdf") -> List:
+def load_chunks(file_path: str = "./data/edital.pdf") -> list[Document]:
     print(f"Loading PDF from '{file_path}'...")
     loader = PyPDFLoader(file_path=file_path)
     pages = loader.load()
