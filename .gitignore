@@ -61,3 +61,7 @@ dist/
 # Jupyter
 # ======================
 .ipynb_checkpoints/
+
+# ======================
+# Data files
+my_chroma_db/

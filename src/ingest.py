@@ -1,21 +1,19 @@
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-# 1. Initialize the loader with the file path
-loader = PyPDFLoader(file_path="./data/edital.pdf")
 
-# 2. Load the PDF into a list of Documents
-pages = loader.load()
+def load_chunks(file_path: str = "./data/edital.pdf") -> list:
+    print(f"Loading PDF from '{file_path}'...")
+    loader = PyPDFLoader(file_path=file_path)
+    pages = loader.load()
+    print(f"Loaded {len(pages)} pages from the PDF.")
 
-# 3. Configure the text splitter
-text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size=500,
-    chunk_overlap=100,
-    add_start_index=True,
-)
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=500,
+        chunk_overlap=100,
+        add_start_index=True,
+    )
 
-# 4. Split the documents into smaller chunks
-chunks = text_splitter.split_documents(pages)
-
-print(f"The original PDF had {len(pages)} pages.")
-print(f"Now you have {len(chunks)} text chunks.")
+    chunks = text_splitter.split_documents(pages)
+    print(f"Split the document into {len(chunks)} chunks.")
+    return chunks
