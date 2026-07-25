@@ -5,6 +5,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
+import sys
 
 load_dotenv()
 
@@ -42,4 +43,11 @@ def get_chain() -> Runnable:
 def ask(pergunta: str) -> str:
     chain = get_chain()
     return chain.invoke(pergunta)
+
+
+if __name__ == "__main__":
+    pergunta = " ".join(sys.argv[1:]) or "Qual o prazo de inscrição?"
+
+    print(f"\nQuestion: {pergunta}")
+    print(f"\nAnswer: {ask(pergunta)}")
 

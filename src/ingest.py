@@ -18,3 +18,13 @@ def load_chunks(file_path: str = "./data/edital.pdf") -> list[Document]:
     chunks = text_splitter.split_documents(pages)
     print(f"Split the document into {len(chunks)} chunks.")
     return chunks
+
+
+if __name__ == "__main__":
+    chunks = load_chunks()
+
+    print("\nFirst chunk metadata:")
+    print(chunks[0].metadata)
+
+    print("\nFirst chunk content:")
+    print(chunks[0].page_content)

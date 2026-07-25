@@ -30,3 +30,8 @@ def get_vector_db() -> Chroma:
     )
     print(f"Saved {vector_db._collection.count()} chunks to '{PERSIST_DIR}'.")
     return vector_db
+
+
+if __name__ == "__main__":
+    vector_db = get_vector_db()
+    print(f"Collection '{COLLECTION_NAME}' holds {vector_db._collection.count()} chunks.")
